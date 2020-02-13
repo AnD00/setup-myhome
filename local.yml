@@ -1,0 +1,62 @@
+
+- hosts: localhost
+  connection: local
+  become: no
+  gather_facts: no
+  roles:
+    - dotenv
+    - alias
+    - java
+    - brew-cask
+    - brew
+    - asdf
+    - git
+    - k8s
+    - zsh
+  vars:
+    brew_repositories:
+      - homebrew/services
+    brew_packages:
+      - { name: openssl }
+      - { name: libffi }
+      - { name: coreutils }
+      - { name: ghq }
+      - { name: git }
+      - { name: gnupg }
+      - { name: graphviz }
+      - { name: htop }
+      - { name: jq }
+      - { name: neovim }
+      - { name: peco }
+      - { name: tree }
+      - { name: wget }
+      - { name: zsh }
+      - { name: asdf }
+      - { name: composer }
+      - { name: mysql@5.7 }
+      - { name: redis }
+      - { name: sqlite }
+      - { name: kubectx }
+      - { name: kubernetes-cli }
+      - { name: kube-ps1 }
+      - { name: stern }
+      - { name: awscli }
+      - { name: aws-iam-authenticator }
+      - { name: s3cmd }
+      - { name: embulk }
+    brew_cask_repositories:
+      - homebrew/cask-versions
+    brew_cask_packages:
+      - { name: alfred }
+      - { name: appcleaner }
+      - { name: bettertouchtool }
+      - { name: clipy }
+      - { name: dropbox }
+      - { name: google-chrome }
+      - { name: iterm2 }
+      - { name: slack }
+      - { name: adoptopenjdk8 }
+      - { name: docker }
+      - { name: kitematic }
+      - { name: vagrant }
+      - { name: visual-studio-code }

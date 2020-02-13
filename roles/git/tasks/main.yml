@@ -1,0 +1,61 @@
+---
+- name: ''
+  git_config:
+    name: user.name
+    scope: global
+    value: 'AnD00'
+- name: ''
+  git_config:
+    name: user.email
+    scope: global
+    value: '19258109+AnD00@users.noreply.github.com'
+- name: ''
+  git_config:
+    name: alias.br
+    scope: global
+    value: 'branch'
+- name: ''
+  git_config:
+    name: alias.cm
+    scope: global
+    value: 'commit'
+- name: ''
+  git_config:
+    name: alias.co
+    scope: global
+    value: 'checkout'
+- name: ''
+  git_config:
+    name: alias.cp
+    scope: global
+    value: 'cherry-pick'
+- name: ''
+  git_config:
+    name: alias.df
+    scope: global
+    value: 'diff'
+- name: ''
+  git_config:
+    name: alias.pl
+    scope: global
+    value: 'pull'
+- name: ''
+  git_config:
+    name: alias.rp
+    scope: global
+    value: 'remote prune origin'
+- name: ''
+  git_config:
+    name: alias.st
+    scope: global
+    value: 'status'
+- name: ''
+  git_config:
+    name: ghq.root
+    scope: global
+    value: '~/ghq'
+- name: ''
+  git_config:
+    name: core.excludesfile
+    scope: global
+    value: '~/.gitignore_global'

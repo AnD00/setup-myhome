@@ -1,0 +1,10 @@
+---
+- name: ''
+  lineinfile:
+    dest: ~/.bash_profile
+    line: 'source ~/Dropbox/myhome-conf/alias.sh'
+- name: copy alias file
+  copy:
+    src: ../files/alias.sh
+    dest: ~/Dropbox/myhome-conf/alias.sh
+    mode: 0755

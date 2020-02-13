@@ -1,0 +1,7 @@
+---
+- name: ''
+  lineinfile:
+    dest: ~/.bash_profile
+    line: 'export PATH="/usr/local/opt/mysql@5.7/bin:$PATH"'
+- name: ''
+  shell: source ~/.bash_profile

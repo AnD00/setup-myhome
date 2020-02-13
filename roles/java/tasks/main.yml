@@ -1,0 +1,7 @@
+---
+- name: ''
+  lineinfile:
+    dest: ~/.bash_profile
+    line: 'export JAVA_HOME="$(/usr/libexec/java_home)"'
+- name: ''
+  shell: source ~/.bash_profile

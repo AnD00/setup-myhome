@@ -1,0 +1,80 @@
+---
+# dropbox
+- name: create Dropbox directory
+  file:
+    path: ~/Dropbox
+    state: directory
+    mode: 0755
+- name: create myhome-conf directory
+  file:
+    path: ~/Dropbox/myhome-conf
+    state: directory
+    mode: 0755
+
+# asdf
+- shell: touch ~/Dropbox/myhome-conf/tool-versions
+- name: symbolic link for .tool-versions
+  file:
+    src: ~/Dropbox/myhome-conf/tool-versions
+    dest: ~/.tool-versions
+    state: link
+
+# bash
+- shell: touch ~/Dropbox/myhome-conf/bash_profile
+- name: symbolic link for .bash_profile
+  file:
+    src: ~/Dropbox/myhome-conf/bash_profile
+    dest: ~/.bash_profile
+    state: link
+- shell: touch ~/Dropbox/myhome-conf/bashrc
+- name: symbolic link for .bashrc
+  file:
+    src: ~/Dropbox/myhome-conf/bashrc
+    dest: ~/.bashrc
+    state: link
+
+# config
+- name: create config directory
+  file:
+    path: ~/Dropbox/myhome-conf/config
+    state: directory
+    mode: 0755
+- name: symbolic link for .config
+  file:
+    src: ~/Dropbox/myhome-conf/config
+    dest: ~/.config
+    state: link
+
+# kube
+- name: create kube directory
+  file:
+    path: ~/Dropbox/myhome-conf/kube
+    state: directory
+    mode: 0755
+- name: symbolic link for .kube
+  file:
+    src: ~/Dropbox/myhome-conf/kube
+    dest: ~/.kube
+    state: link
+
+# profile
+- shell: touch ~/Dropbox/myhome-conf/profile
+- name: symbolic link for .profile
+  file:
+    src: ~/Dropbox/myhome-conf/profile
+    dest: ~/.profile
+    state: link
+
+# zsh
+- shell: touch ~/Dropbox/myhome-conf/zshenv
+- name: symbolic link for .zshenv
+  file:
+    src: ~/Dropbox/myhome-conf/zshenv
+    dest: ~/.zshenv
+    state: link
+- shell: touch ~/Dropbox/myhome-conf/zshrc
+- name: symbolic link for .zshrc
+  file:
+    src: ~/Dropbox/myhome-conf/zshrc
+    dest: ~/.zshrc
+    state: link

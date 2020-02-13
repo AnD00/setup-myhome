@@ -1,0 +1,25 @@
+---
+- name: ''
+  lineinfile:
+    dest: ~/.bash_profile
+    line: 'alias brew="PATH=/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin brew"'
+- name: ''
+  lineinfile:
+    dest: ~/.bash_profile
+    line: 'export PATH="/usr/local/sbin:$PATH"'
+
+- name: tap brew repositories
+  homebrew_tap:
+    tap: '{{ item }}'
+    state: present
+  with_items: '{{ brew_repositories }}'
+  when: brew_repositories
+- name: update brew
+  homebrew:
+    update_homebrew: yes
+- name: install/upgrade brew packages
+  homebrew:
+    name: '{{ item.name | default(item) }}'
+    state: "{{ item.state | default('latest') }}"
+  with_items: '{{ brew_packages }}'
+  when: brew_packages

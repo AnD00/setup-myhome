@@ -1,0 +1,64 @@
+---
+- shell: touch ~/.zshenv
+- name: ''
+  blockinfile:
+    dest: ~/.zshenv
+    content: |
+      autoload -Uz compinit
+      compinit
+- name: ''
+  blockinfile:
+    dest: ~/.zshenv
+    content: |
+      autoload -Uz vcs_info
+      zstyle ':vcs_info:*' formats '(%s)[%b]'
+      zstyle ':vcs_info:*' actionformats '(%s)[%b|%a]'
+      precmd () { vcs_info }
+      setopt prompt_subst
+      RPROMPT=$RPROMPT'${vcs_info_msg_0_}'
+
+- shell: touch ~/.zshrc
+- name: ''
+  lineinfile:
+    dest: ~/.zshrc
+    line: 'source ~/.bash_profile'
+- name: ''
+  lineinfile:
+    dest: ~/.zshrc
+    line: 'if [[ -s ~/.zprezto/init.zsh ]]; then source ~/.zprezto/init.zsh ; fi'
+- name: ''
+  lineinfile:
+    dest: ~/.zshrc
+    line: 'fpath=(/usr/local/share/zsh-completions $fpath)'
+- name: ''
+  blockinfile:
+    dest: ~/.zshrc
+    content: |
+      function peco-history-selection() {
+        BUFFER=`history -n 1 | tail -r  | awk '!a[$0]++' | peco`
+        CURSOR=$#BUFFER
+        zle reset-prompt
+      }
+      zle -N peco-history-selection
+      bindkey '^R' peco-history-selection
+
+- name: ''
+  git:
+    repo: git@github.com:sorin-ionescu/prezto.git
+    dest: ~/.zprezto
+    force: yes
+- name: ''
+  replace:
+    dest: ~/.zprofile
+    regexp: ^'nano'$
+    replace: 'vim'
+- name: ''
+  file:
+    state: link
+    src: ~/.zprezto/runcoms/{{ item }}
+    path: ~/.{{ item }}
+  with_items:
+    - zlogin
+    - zlogout
+    - zpreztorc
+    - zprofile
