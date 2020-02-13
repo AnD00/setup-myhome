@@ -39,6 +39,7 @@
       - { name: kubectx }
       - { name: kubernetes-cli }
       - { name: kube-ps1 }
+      - { name: kustomize }
       - { name: stern }
       - { name: awscli }
       - { name: aws-iam-authenticator }
