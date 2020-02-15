@@ -4,6 +4,7 @@
   become: no
   gather_facts: no
   roles:
+    - macos
     - dotenv
     - alias
     - java
@@ -61,3 +62,48 @@
       - { name: kitematic }
       - { name: vagrant }
       - { name: visual-studio-code }
+    macos_global_defaults:
+      - key: AppleInterfaceStyle
+        type: string
+        value: Dark
+      - key: AppleLanguages
+        type: array
+        value:
+          - 'ja-JP'
+          - 'en-JP'
+      - key: AppleLocale
+        type: string
+        value: 'ja-JP'
+      - key: AppleMeasurementUnits
+        type: string
+        value: Centimeters
+      - key: AppleMetricUnits
+        type: bool
+        value: true
+      - key: AppleTemperatureUnit
+        type: string
+        value: Celsius
+    macos_app_defaults:
+      - domain: dock
+        key: orientation
+        type: string
+        value: left
+      - domain: dock
+        key: autohide
+        type: bool
+        value: true
+      - domain: finder
+        key: AppleShowAllFiles
+        type: string
+        value: YES
+      - domain: systemuiserver
+        key: menuExtras
+        type: array
+        value:
+          - '/System/Library/CoreServices/Menu Extras/Battery.menu'
+          - '/System/Library/CoreServices/Menu Extras/Bluetooth.menu'
+          - '/System/Library/CoreServices/Menu Extras/Clock.menu'
+      - domain: menuextra.battery
+        key: ShowPercent
+        type: string
+        value: YES
