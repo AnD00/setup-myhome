@@ -12,6 +12,7 @@
     - brew
     - asdf
     - git
+    - mysql
     - k8s
     - zsh
   vars:
