@@ -50,5 +50,5 @@
 - name: change .zprezto editor
   replace:
     dest: ~/.zprofile
-    regexp: ^'nano'$
-    replace: 'vim'
+    regexp: (.+?)'nano'$
+    replace: \1'vim'
