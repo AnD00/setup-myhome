@@ -1,6 +1,6 @@
 ---
 - shell: touch ~/.zshenv
-- name: ''
+- name: setup .zshenv
   blockinfile:
     dest: ~/.zshenv
     content: |
@@ -13,22 +13,17 @@
       RPROMPT=$RPROMPT'${vcs_info_msg_0_}'
 
 - shell: touch ~/.zshrc
-- name: ''
+- name: load .zshrc file
   lineinfile:
     dest: ~/.zshrc
     line: 'source ~/.bash_profile'
-- name: ''
-  lineinfile:
-    dest: ~/.zshrc
-    line: 'if [[ -s ~/.zprezto/init.zsh ]]; then source ~/.zprezto/init.zsh ; fi'
-- name: ''
-  lineinfile:
-    dest: ~/.zshrc
-    line: 'fpath=(/usr/local/share/zsh-completions $fpath)'
-- name: ''
+- name: setup .zshrc
   blockinfile:
     dest: ~/.zshrc
     content: |
+      source ~/.bash_profile
+      if [[ -s ~/.zprezto/init.zsh ]]; then source ~/.zprezto/init.zsh ; fi
+      fpath=(/usr/local/share/zsh-completions $fpath)
       function peco-history-selection() {
         BUFFER=`history -n 1 | tail -r  | awk '!a[$0]++' | peco`
         CURSOR=$#BUFFER
@@ -37,12 +32,12 @@
       zle -N peco-history-selection
       bindkey '^R' peco-history-selection
 
-- name: ''
+- name: git clone .zprezto
   git:
     repo: git@github.com:sorin-ionescu/prezto.git
     dest: ~/.zprezto
     force: yes
-- name: ''
+- name: symbolic link for .zprezto runcoms
   file:
     state: link
     src: ~/.zprezto/runcoms/{{ item }}
@@ -52,7 +47,7 @@
     - zlogout
     - zpreztorc
     - zprofile
-- name: ''
+- name: change .zprezto editor
   replace:
     dest: ~/.zprofile
     regexp: ^'nano'$

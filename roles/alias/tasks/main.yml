@@ -1,5 +1,5 @@
 ---
-- name: ''
+- name: load alias file
   lineinfile:
     dest: ~/.bash_profile
     line: 'source ~/Dropbox/myhome-conf/alias.sh'

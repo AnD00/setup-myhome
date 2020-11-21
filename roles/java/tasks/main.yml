@@ -1,7 +1,7 @@
 ---
-- name: ''
+- name: set java environment variables
   lineinfile:
     dest: ~/.bash_profile
     line: 'export JAVA_HOME="$(/usr/libexec/java_home)"'
-- name: ''
+- name: load java file
   shell: source ~/.bash_profile

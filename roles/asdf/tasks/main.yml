@@ -1,14 +1,14 @@
 ---
 # asdf
-- name: ''
+- name: set asdf environment variables
   lineinfile:
     dest: ~/.bash_profile
     line: 'export ASDF_PREFIX="/usr/local/opt/asdf"'
-- name: ''
+- name: load asdf file
   lineinfile:
     dest: ~/.bash_profile
     line: 'source $ASDF_PREFIX/asdf.sh'
-- name: ''
+- name: load asdf bash file
   lineinfile:
     dest: ~/.bash_profile
     line: 'source $ASDF_PREFIX/etc/bash_completion.d/asdf.bash'
@@ -60,7 +60,7 @@
   shell: asdf global python $(asdf list-all python | grep "^3.*" | grep -v dev | sort -r | head -n 1)
 
 # ruby
-- name: ''
+- name: set ruby environment variables
   lineinfile:
     dest: ~/.bash_profile
     line: 'export RUBY_CONFIGURE_OPTS="--with-openssl-dir=$(brew --prefix openssl@1.1)"'

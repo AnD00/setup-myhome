@@ -1,7 +1,7 @@
 ---
-- name: ''
+- name: set mysql environment variables
   lineinfile:
     dest: ~/.bash_profile
     line: 'export PATH="/usr/local/opt/mysql@5.7/bin:$PATH"'
-- name: ''
+- name: load mysql file
   shell: source ~/.bash_profile
