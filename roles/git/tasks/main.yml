@@ -54,8 +54,12 @@
     name: ghq.root
     scope: global
     value: '~/ghq'
-- name: ''
-  git_config:
-    name: core.excludesfile
-    scope: global
-    value: '~/.gitignore_global'
+
+- name: create git ignore file
+  blockinfile:
+    dest: ~/Dropbox/myhome-conf/config/git/ignore
+    create: true
+    content: |
+      .DS_Store
+      .byebug_history
+      .vscode

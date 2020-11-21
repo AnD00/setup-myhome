@@ -45,6 +45,13 @@
     dest: ~/.config
     state: link
 
+# git
+- name: create git directory
+  file:
+    path: ~/Dropbox/myhome-conf/config/git
+    state: directory
+    mode: 0755
+
 # kube
 - name: create kube directory
   file:
