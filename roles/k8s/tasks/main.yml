@@ -1,8 +1,13 @@
 ---
 - name: ''
-  blockinfile:
+  lineinfile:
     dest: ~/.bash_profile
-    content: |
-      source /usr/local/opt/kube-ps1/share/kube-ps1.sh
-      PROMPT='$(kube_ps1)'$PROMPT
-      kubeoff
+    line: 'source /usr/local/opt/kube-ps1/share/kube-ps1.sh'
+- name: ''
+  lineinfile:
+    dest: ~/.bash_profile
+    line: 'PROMPT="$(kube_ps1)"$PROMPT'
+- name: ''
+  lineinfile:
+    dest: ~/.bash_profile
+    line: 'kubeoff'

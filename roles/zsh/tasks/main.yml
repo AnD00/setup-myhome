@@ -4,13 +4,8 @@
   blockinfile:
     dest: ~/.zshenv
     content: |
-      autoload -Uz compinit
+      autoload -Uz compinit vcs_info
       compinit
-- name: ''
-  blockinfile:
-    dest: ~/.zshenv
-    content: |
-      autoload -Uz vcs_info
       zstyle ':vcs_info:*' formats '(%s)[%b]'
       zstyle ':vcs_info:*' actionformats '(%s)[%b|%a]'
       precmd () { vcs_info }
@@ -48,11 +43,6 @@
     dest: ~/.zprezto
     force: yes
 - name: ''
-  replace:
-    dest: ~/.zprofile
-    regexp: ^'nano'$
-    replace: 'vim'
-- name: ''
   file:
     state: link
     src: ~/.zprezto/runcoms/{{ item }}
@@ -62,3 +52,8 @@
     - zlogout
     - zpreztorc
     - zprofile
+- name: ''
+  replace:
+    dest: ~/.zprofile
+    regexp: ^'nano'$
+    replace: 'vim'

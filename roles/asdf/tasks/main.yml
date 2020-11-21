@@ -1,12 +1,17 @@
 ---
 # asdf
 - name: ''
-  blockinfile:
+  lineinfile:
     dest: ~/.bash_profile
-    content: |
-      export ASDF_PREFIX="/usr/local/opt/asdf"
-      source $ASDF_PREFIX/asdf.sh
-      source $ASDF_PREFIX/etc/bash_completion.d/asdf.bash
+    line: 'export ASDF_PREFIX="/usr/local/opt/asdf"'
+- name: ''
+  lineinfile:
+    dest: ~/.bash_profile
+    line: 'source $ASDF_PREFIX/asdf.sh'
+- name: ''
+  lineinfile:
+    dest: ~/.bash_profile
+    line: 'source $ASDF_PREFIX/etc/bash_completion.d/asdf.bash'
 - name: create asdf directory
   file:
     path: ~/.asdf
@@ -56,10 +61,9 @@
 
 # ruby
 - name: ''
-  blockinfile:
+  lineinfile:
     dest: ~/.bash_profile
-    content: |
-      export RUBY_CONFIGURE_OPTS="--with-openssl-dir=$(brew --prefix openssl@1.1)"
+    line: 'export RUBY_CONFIGURE_OPTS="--with-openssl-dir=$(brew --prefix openssl@1.1)"'
 - name: check ruby
   stat:
     path: ~/.asdf/plugins/ruby

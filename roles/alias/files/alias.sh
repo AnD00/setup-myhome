@@ -2,6 +2,7 @@
 
 # git
 alias g='cd $(ghq root)/$(ghq list | peco)'
+alias gb='git branch $(git branch | peco | sed -e "s/\*//g")'
 alias gc='git checkout $(git branch | peco | sed -e "s/\*//g")'
 
 # k8s
