@@ -1,5 +1,4 @@
 ---
-- shell: touch ~/.zshenv
 - name: setup .zshenv
   blockinfile:
     dest: ~/.zshenv
@@ -12,11 +11,6 @@
       setopt prompt_subst
       RPROMPT=$RPROMPT'${vcs_info_msg_0_}'
 
-- shell: touch ~/.zshrc
-- name: load .zshrc file
-  lineinfile:
-    dest: ~/.zshrc
-    line: 'source ~/.bash_profile'
 - name: setup .zshrc
   blockinfile:
     dest: ~/.zshrc
