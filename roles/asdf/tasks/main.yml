@@ -55,6 +55,11 @@
   shell: asdf global python $(asdf list-all python | grep "^3.*" | grep -v dev | sort -r | head -n 1)
 
 # ruby
+- name: ''
+  blockinfile:
+    dest: ~/.bash_profile
+    content: |
+      export RUBY_CONFIGURE_OPTS="--with-openssl-dir=$(brew --prefix openssl@1.1)"
 - name: check ruby
   stat:
     path: ~/.asdf/plugins/ruby
