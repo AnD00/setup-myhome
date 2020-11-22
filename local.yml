@@ -43,6 +43,7 @@
       - { name: kube-ps1 }
       - { name: kustomize }
       - { name: stern }
+      - { name: fzf }
       - { name: awscli }
       - { name: aws-iam-authenticator }
       - { name: s3cmd }
