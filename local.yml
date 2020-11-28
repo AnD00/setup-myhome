@@ -13,8 +13,8 @@
     - asdf
     - git
     - mysql
-    - k8s
     - zsh
+    - k8s
   vars:
     brew_repositories:
       - homebrew/services
