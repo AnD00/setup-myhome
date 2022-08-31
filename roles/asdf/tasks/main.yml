@@ -3,15 +3,11 @@
 - name: set asdf environment variables
   lineinfile:
     dest: ~/.bash_profile
-    line: 'export ASDF_PREFIX="/usr/local/opt/asdf"'
+    line: 'export ASDF_PREFIX="/opt/homebrew/opt/asdf"'
 - name: load asdf file
   lineinfile:
     dest: ~/.bash_profile
-    line: 'source $ASDF_PREFIX/asdf.sh'
-- name: load asdf bash file
-  lineinfile:
-    dest: ~/.bash_profile
-    line: 'source $ASDF_PREFIX/etc/bash_completion.d/asdf.bash'
+    line: 'source $ASDF_PREFIX/libexec/asdf.sh'
 - name: create asdf directory
   file:
     path: ~/.asdf
