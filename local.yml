@@ -47,23 +47,26 @@
       - { name: awscli }
       - { name: aws-iam-authenticator }
       - { name: s3cmd }
-      - { name: embulk }
+      # - { name: embulk }
     brew_cask_repositories:
       - homebrew/cask-versions
     brew_cask_packages:
       - { name: alfred }
+      - { name: amazon-chime }
       - { name: appcleaner }
       - { name: bettertouchtool }
       - { name: clipy }
+      - { name: deepl }
       - { name: dropbox }
-      # - { name: google-chrome }
+      - { name: google-chrome }
       - { name: iterm2 }
       - { name: slack }
       - { name: adoptopenjdk8 }
       - { name: docker }
       - { name: kitematic }
       - { name: vagrant }
-      # - { name: visual-studio-code }
+      - { name: visual-studio-code }
+      - { name: zoom }
     macos_global_defaults:
       - key: AppleInterfaceStyle
         type: string
