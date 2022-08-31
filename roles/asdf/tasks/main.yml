@@ -39,8 +39,6 @@
 - name: install nodejs
   shell: asdf plugin-add nodejs https://github.com/asdf-vm/asdf-nodejs.git
   when: not nodejsresult.stat.exists
-- name: import Pretty Good Privacy
-  shell: bash ~/.asdf/plugins/nodejs/bin/import-release-team-keyring
 - name: install latest nodejs
   shell: asdf install nodejs $(asdf list-all nodejs | sort -r | head -n 1)
 - name: set latest nodejs version
