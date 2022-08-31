@@ -9,7 +9,9 @@ echo 'install commandline tools *********************************'
 xcode-select --install
 
 echo 'install homebrew ******************************************'
-ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+echo 'eval "$(/opt/homebrew/bin/brew shellenv)"' >> ~/.zshrc
+source ~/.zshrc
 brew update
 
 echo 'install ansible *******************************************'
