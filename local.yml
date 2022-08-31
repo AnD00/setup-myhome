@@ -96,8 +96,8 @@
         value: true
       - domain: finder
         key: AppleShowAllFiles
-        type: string
-        value: YES
+        type: bool
+        value: true
       - domain: systemuiserver
         key: menuExtras
         type: array
