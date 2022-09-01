@@ -2,7 +2,7 @@
 - name: load kube-ps1 file
   lineinfile:
     dest: ~/.zshrc
-    line: 'source /usr/local/opt/kube-ps1/share/kube-ps1.sh'
+    line: 'source /opt/homebrew/opt/kube-ps1/share/kube-ps1.sh'
 - name: set kube-ps1 environment variables
   lineinfile:
     dest: ~/.zshrc
