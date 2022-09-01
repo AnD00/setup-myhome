@@ -3,6 +3,7 @@
   blockinfile:
     dest: ~/.zshenv
     content: |
+      FPATH=/opt/homebrew/share/zsh-completions:$FPATH
       autoload -Uz compinit vcs_info
       compinit
 
@@ -10,14 +11,16 @@
   blockinfile:
     dest: ~/.zshrc
     content: |
+      if [[ -s ~/.zprezto/init.zsh ]]; then source ~/.zprezto/init.zsh ; fi
       source ~/.bash_profile
-      setopt prompt_subst
-      zstyle ':vcs_info:*' formats '(%s)[%b]'
+      zstyle ':vcs_info:git:*' check-for-changes true
+      zstyle ':vcs_info:git:*' stagedstr "%F{yellow}!"
+      zstyle ':vcs_info:git:*' unstagedstr "%F{red}+"
+      zstyle ':vcs_info:*' formats '(%s)%F{green}%c%u[%b]%f'
       zstyle ':vcs_info:*' actionformats '(%s)[%b|%a]'
       precmd () { vcs_info }
+      setopt prompt_subst
       PROMPT='${vcs_info_msg_0_}'$'\n'$PROMPT
-      if [[ -s ~/.zprezto/init.zsh ]]; then source ~/.zprezto/init.zsh ; fi
-      fpath=(/usr/local/share/zsh-completions $fpath)
       function peco-history-selection() {
         BUFFER=`history -n 1 | tail -r  | awk '!a[$0]++' | peco`
         CURSOR=$#BUFFER
