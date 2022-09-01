@@ -1,13 +1,4 @@
 ---
-- name: create brew alias
-  lineinfile:
-    dest: ~/.bash_profile
-    line: 'alias brew="PATH=/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin brew"'
-- name: set brew environment variables
-  lineinfile:
-    dest: ~/.bash_profile
-    line: 'export PATH="/usr/local/sbin:$PATH"'
-
 - name: tap brew repositories
   homebrew_tap:
     tap: '{{ item }}'
