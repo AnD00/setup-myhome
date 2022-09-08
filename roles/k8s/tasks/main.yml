@@ -6,7 +6,7 @@
 - name: set kube-ps1 environment variables
   lineinfile:
     dest: ~/.zshrc
-    line: 'PROMPT="$(kube_ps1) "$PROMPT'
+    line: "PROMPT='$(kube_ps1) '$PROMPT"
 - name: hide kube-ps1
   lineinfile:
     dest: ~/.zshrc
