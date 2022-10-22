@@ -1,0 +1,10 @@
+---
+- name: set aws profile environment variables
+  blockinfile:
+    dest: ~/.zshrc
+    content: |
+      function aws_prof {
+        local profile="${AWS_PROFILE:=default}"
+        echo "(aws:${profile}) "
+      }
+      PROMPT='$(aws_prof)'$PROMPT

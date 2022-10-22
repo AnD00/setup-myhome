@@ -5,6 +5,9 @@ alias g='cd $(ghq root)/$(ghq list | peco)'
 alias gb='git branch $(git branch | peco | sed -e "s/\*//g")'
 alias gc='git checkout $(git branch | peco | sed -e "s/\*//g")'
 
+# aws
+alias awsp='source $(ghq root)/github.com/itouuuuuuuuu/awsp/run.sh'
+
 # k8s
 alias k='kubectl'
 alias ka='kubectl apply'
