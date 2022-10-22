@@ -2,7 +2,7 @@
 - name: load alias file
   lineinfile:
     dest: ~/.bash_profile
-    line: 'source ~/Dropbox/myhome-conf/alias.sh'
+    line: "source ~/Dropbox/myhome-conf/alias.sh"
 - name: copy alias file
   copy:
     src: ../files/alias.sh

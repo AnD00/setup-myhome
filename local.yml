@@ -1,4 +1,3 @@
-
 - hosts: localhost
   connection: local
   become: no
@@ -75,11 +74,11 @@
       - key: AppleLanguages
         type: array
         value:
-          - 'ja-JP'
-          - 'en-JP'
+          - "ja-JP"
+          - "en-JP"
       - key: AppleLocale
         type: string
-        value: 'ja-JP'
+        value: "ja-JP"
       - key: AppleMeasurementUnits
         type: string
         value: Centimeters
@@ -106,9 +105,9 @@
         key: menuExtras
         type: array
         value:
-          - '/System/Library/CoreServices/Menu Extras/Battery.menu'
-          - '/System/Library/CoreServices/Menu Extras/Bluetooth.menu'
-          - '/System/Library/CoreServices/Menu Extras/Clock.menu'
+          - "/System/Library/CoreServices/Menu Extras/Battery.menu"
+          - "/System/Library/CoreServices/Menu Extras/Bluetooth.menu"
+          - "/System/Library/CoreServices/Menu Extras/Clock.menu"
       - domain: menuextra.battery
         key: ShowPercent
         type: string

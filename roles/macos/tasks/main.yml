@@ -2,18 +2,18 @@
 - name: setup macos global default settings
   osx_defaults:
     host: "{{ item.host | default() }}"
-    key: '{{ item.key }}'
-    type: '{{ item.type }}'
-    value: '{{ item.value }}'
-  with_items: '{{ macos_global_defaults }}'
+    key: "{{ item.key }}"
+    type: "{{ item.type }}"
+    value: "{{ item.value }}"
+  with_items: "{{ macos_global_defaults }}"
 
 - name: setup macos app default settings
   osx_defaults:
     host: "{{ item.host | default() }}"
-    domain: 'com.apple.{{ item.domain }}'
-    key: '{{ item.key }}'
-    type: '{{ item.type }}'
+    domain: "com.apple.{{ item.domain }}"
+    key: "{{ item.key }}"
+    type: "{{ item.type }}"
     value: "{{ item.value | default() }}"
   register: defaults_out
   with_items:
-    - '{{ macos_app_defaults }}'
+    - "{{ macos_app_defaults }}"

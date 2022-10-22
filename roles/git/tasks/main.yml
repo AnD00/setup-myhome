@@ -3,57 +3,57 @@
   git_config:
     name: user.name
     scope: global
-    value: 'AnD00'
+    value: "AnD00"
 - name: set git config user email
   git_config:
     name: user.email
     scope: global
-    value: '19258109+AnD00@users.noreply.github.com'
+    value: "19258109+AnD00@users.noreply.github.com"
 - name: create git branch alias
   git_config:
     name: alias.br
     scope: global
-    value: 'branch'
+    value: "branch"
 - name: create git commit alias
   git_config:
     name: alias.cm
     scope: global
-    value: 'commit'
+    value: "commit"
 - name: create git checkout alias
   git_config:
     name: alias.co
     scope: global
-    value: 'checkout'
+    value: "checkout"
 - name: create git cherry-pick alias
   git_config:
     name: alias.cp
     scope: global
-    value: 'cherry-pick'
+    value: "cherry-pick"
 - name: create git diff alias
   git_config:
     name: alias.df
     scope: global
-    value: 'diff'
+    value: "diff"
 - name: create git pull alias
   git_config:
     name: alias.pl
     scope: global
-    value: 'pull'
+    value: "pull"
 - name: create git remote prune origin alias
   git_config:
     name: alias.rp
     scope: global
-    value: 'remote prune origin'
+    value: "remote prune origin"
 - name: create git status alias
   git_config:
     name: alias.st
     scope: global
-    value: 'status'
+    value: "status"
 - name: set git ghq root
   git_config:
     name: ghq.root
     scope: global
-    value: '~/ghq'
+    value: "~/ghq"
 
 - name: create git ignore file
   blockinfile:
