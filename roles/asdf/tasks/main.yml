@@ -26,6 +26,10 @@
   shell: asdf install golang $(asdf list-all golang | grep -v beta | grep -v rc | tail -n 1)
 - name: set latest golang version
   shell: asdf global golang $(asdf list-all golang | grep -v beta | grep -v rc | tail -n 1)
+- name: set golang environment variables
+  lineinfile:
+    dest: ~/.bash_profile
+    line: 'export PATH="$GOPATH/bin:$PATH"'
 
 # nodejs
 - name: check nodejs
