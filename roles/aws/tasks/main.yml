@@ -8,3 +8,5 @@
         echo "(aws:${profile}) "
       }
       PROMPT='$(aws_prof)'$PROMPT
+    create: yes
+    marker: "# {mark} ANSIBLE MANAGED BLOCK for aws"

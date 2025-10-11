@@ -20,12 +20,12 @@
     path: ~/.asdf/plugins/golang
   register: golangresult
 - name: install golang
-  shell: asdf plugin-add golang https://github.com/kennyp/asdf-golang.git
+  shell: asdf plugin add golang https://github.com/asdf-community/asdf-golang.git
   when: not golangresult.stat.exists
 - name: install latest golang
-  shell: asdf install golang $(asdf list-all golang | grep -v beta | grep -v rc | tail -n 1)
+  shell: asdf install golang $(asdf list all golang | grep "^\d.*" | grep -v beta | grep -v rc | tail -n 1)
 - name: set latest golang version
-  shell: asdf global golang $(asdf list-all golang | grep -v beta | grep -v rc | tail -n 1)
+  shell: asdf set -u golang $(asdf list all golang | grep "^\d.*" | grep -v beta | grep -v rc | tail -n 1)
 - name: set golang environment variables
   lineinfile:
     dest: ~/.bash_profile
@@ -37,12 +37,12 @@
     path: ~/.asdf/plugins/nodejs
   register: nodejsresult
 - name: install nodejs
-  shell: asdf plugin-add nodejs https://github.com/asdf-vm/asdf-nodejs.git
+  shell: asdf plugin add nodejs https://github.com/asdf-vm/asdf-nodejs.git
   when: not nodejsresult.stat.exists
 - name: install latest nodejs
-  shell: asdf install nodejs $(asdf list-all nodejs | sort -r | head -n 1)
+  shell: asdf install nodejs $(asdf list all nodejs | grep '^\d.*' | sort -V | tail -n 1)
 - name: set latest nodejs version
-  shell: asdf global nodejs $(asdf list-all nodejs | sort -r | head -n 1)
+  shell: asdf set -u nodejs $(asdf list all nodejs | grep '^\d.*' | sort -V | tail -n 1)
 
 # python
 - name: check python
@@ -50,12 +50,12 @@
     path: ~/.asdf/plugins/python
   register: pythonresult
 - name: install python
-  shell: asdf plugin-add python https://github.com/danhper/asdf-python.git
+  shell: asdf plugin add python https://github.com/asdf-community/asdf-python.git
   when: not pythonresult.stat.exists
 - name: install latest python3
-  shell: asdf install python $(asdf list-all python | grep "^3.*" | grep -v dev | sort -r | head -n 1)
+  shell: asdf install python $(asdf list all python | grep "^3.*" | grep -v dev | sort -V | tail -n 1)
 - name: set latest python
-  shell: asdf global python $(asdf list-all python | grep "^3.*" | grep -v dev | sort -r | head -n 1)
+  shell: asdf set -u python $(asdf list all python | grep "^3.*" | grep -v dev | sort -V | tail -n 1)
 
 # ruby
 - name: check ruby
@@ -63,12 +63,25 @@
     path: ~/.asdf/plugins/ruby
   register: rubyresult
 - name: install ruby
-  shell: asdf plugin-add ruby https://github.com/asdf-vm/asdf-ruby.git
+  shell: asdf plugin add ruby https://github.com/asdf-vm/asdf-ruby.git
   when: not rubyresult.stat.exists
 - name: install latest ruby
-  shell: asdf install ruby $(asdf list-all ruby | grep "^\d.*" | grep -v dev | grep -v preview | grep -v rc | sort -r | head -n 1)
+  shell: asdf install ruby $(asdf list all ruby | grep "^\d.*" | grep -v dev | grep -v preview | grep -v rc | sort -r | head -n 1)
 - name: set latest ruby version
-  shell: asdf global ruby $(asdf list-all ruby | grep "^\d.*" | grep -v dev | grep -v preview | grep -v rc | sort -r | head -n 1)
+  shell: asdf set -u ruby $(asdf list all ruby | grep "^\d.*" | grep -v dev | grep -v preview | grep -v rc | sort -r | head -n 1)
+
+# rust
+- name: check rust
+  stat:
+    path: ~/.asdf/plugins/rust
+  register: rustresult
+- name: install rust
+  shell: asdf plugin add rust https://github.com/asdf-community/asdf-rust.git
+  when: not rustresult.stat.exists
+- name: install latest rust
+  shell: asdf install rust $(asdf list all rust | grep "^\d.*" | tail -n 1)
+- name: set latest rust version
+  shell: asdf set -u rust $(asdf list all rust | grep "^\d.*" | tail -n 1)
 
 # terraform
 - name: check terraform
@@ -76,9 +89,9 @@
     path: ~/.asdf/plugins/terraform
   register: tfresult
 - name: install terrafrom
-  shell: asdf plugin-add terraform https://github.com/Banno/asdf-hashicorp.git
+  shell: asdf plugin add terraform https://github.com/asdf-community/asdf-hashicorp.git
   when: not tfresult.stat.exists
 - name: install latest terraform
-  shell: asdf install terraform $(asdf list-all terraform | grep -v beta | grep -v rc | grep -v alpha | tail -n 1)
+  shell: asdf install terraform $(asdf list all terraform | grep -v '^\s*$' | grep -v beta | grep -v rc | grep -v alpha | tail -n 1)
 - name: set latest terraform version
-  shell: asdf global terraform $(asdf list-all terraform | grep -v beta | grep -v rc | grep -v alpha | tail -n 1)
+  shell: asdf set -u terraform $(asdf list all terraform | grep -v '^\s*$' | grep -v beta | grep -v rc | grep -v alpha | tail -n 1)

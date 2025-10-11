@@ -6,6 +6,8 @@
       FPATH=/opt/homebrew/share/zsh-completions:$FPATH
       autoload -Uz compinit vcs_info
       compinit
+    create: yes
+    marker: "# {mark} ANSIBLE MANAGED BLOCK for zshenv"
 
 - name: setup .zshrc
   blockinfile:
@@ -29,6 +31,8 @@
       zle -N peco-history-selection
       bindkey '^R' peco-history-selection
       if [ ! -e ~/.zshrc.zwc ] || [ ~/.zshrc -nt ~/.zshrc.zwc ]; then zcompile ~/.zshrc ; fi
+    create: yes
+    marker: "# {mark} ANSIBLE MANAGED BLOCK for zshrc"
 
 - name: git clone .zprezto
   git:
@@ -40,6 +44,7 @@
     state: link
     src: ~/.zprezto/runcoms/{{ item }}
     path: ~/.{{ item }}
+    force: yes
   with_items:
     - zlogin
     - zlogout

@@ -1,7 +1,18 @@
 ---
-- name: set java environment variables
-  lineinfile:
-    dest: ~/.bash_profile
-    line: 'export JAVA_HOME="$(/usr/libexec/java_home)"'
-- name: load java file
-  shell: source ~/.bash_profile
+- name: create symlink for system Java wrappers
+  file:
+    src: /opt/homebrew/opt/openjdk/libexec/openjdk.jdk
+    dest: /Library/Java/JavaVirtualMachines/openjdk.jdk
+    state: link
+    force: yes
+  become: true
+
+- name: setup .zshrc for openjdk
+  blockinfile:
+    dest: ~/.zshrc
+    content: |
+      export PATH="/opt/homebrew/opt/openjdk/bin:$PATH"
+      export JAVA_HOME="$(/usr/libexec/java_home)"
+      export CPPFLAGS="-I/opt/homebrew/opt/openjdk/include"
+    create: yes
+    marker: "# {mark} ANSIBLE MANAGED BLOCK for openjdk"

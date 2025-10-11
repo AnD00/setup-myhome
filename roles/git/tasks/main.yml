@@ -49,6 +49,11 @@
     name: alias.st
     scope: global
     value: "status"
+- name: set git rebase
+  git_config:
+    name: pull.rb
+    scope: global
+    value: rebase
 - name: set git ghq root
   git_config:
     name: ghq.root
@@ -62,6 +67,7 @@
     content: |
       .DS_Store
       .byebug_history
+      .claude
       .vscode
 
 - name: ensure github.com is a known host

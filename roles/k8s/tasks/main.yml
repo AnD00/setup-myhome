@@ -4,10 +4,11 @@
     dest: ~/.zshrc
     line: "source /opt/homebrew/opt/kube-ps1/share/kube-ps1.sh"
 - name: set kube-ps1 environment variables
-  lineinfile:
+  blockinfile:
     dest: ~/.zshrc
-    line: "PROMPT='$(kube_ps1) '$PROMPT"
-- name: hide kube-ps1
-  lineinfile:
-    dest: ~/.zshrc
-    line: "kubeoff"
+    content: |
+      source /opt/homebrew/opt/kube-ps1/share/kube-ps1.sh
+      PROMPT='$(kube_ps1) '$PROMPT
+      kubeoff
+    create: yes
+    marker: "# {mark} ANSIBLE MANAGED BLOCK for kube-ps1"

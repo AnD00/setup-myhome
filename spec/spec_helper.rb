@@ -23,5 +23,5 @@ def homebrew_caskroom
   env = Shellwords.shellsplit(ENV["HOMEBREW_CASK_OPTS"] || "").map do |option|
     option.split("=")
   end
-  Hash[*env.flatten]["--caskroom"] || "/usr/local/Caskroom"
+  Hash[*env.flatten]["--caskroom"] || "#{`brew --prefix`.chomp}/Caskroom"
 end

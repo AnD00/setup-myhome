@@ -7,7 +7,6 @@ GEM
       net-ssh (>= 2.6.5)
     net-ssh (3.0.2)
     net-telnet (0.1.1)
-    rake (11.1.2)
     rspec (3.4.0)
       rspec-core (~> 3.4.0)
       rspec-expectations (~> 3.4.0)
@@ -40,8 +39,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  rake
   serverspec
 
 BUNDLED WITH
-   1.11.2
+   1.17.2

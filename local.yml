@@ -16,10 +16,9 @@
     - aws
     - k8s
   vars:
-    brew_repositories:
-      - homebrew/services
+    ansible_python_interpreter: /opt/homebrew/bin/python3.13
     brew_packages:
-      - { name: openssl }
+      - { name: openssl@3 }
       - { name: libffi }
       - { name: coreutils }
       - { name: ghq }
@@ -35,7 +34,8 @@
       - { name: zsh }
       - { name: asdf }
       - { name: composer }
-      - { name: mysql@5.7 }
+      - { name: mysql@8.0 }
+      - { name: openjdk }
       - { name: redis }
       - { name: sqlite }
       - { name: kubectx }
@@ -46,27 +46,20 @@
       - { name: fzf }
       - { name: awscli }
       - { name: aws-iam-authenticator }
-      - { name: s3cmd }
-      # - { name: embulk }
-    brew_cask_repositories:
-      - homebrew/cask-versions
     brew_cask_packages:
       - { name: alfred }
-      - { name: amazon-chime }
       - { name: appcleaner }
-      - { name: bettertouchtool }
       - { name: clipy }
       - { name: deepl }
       - { name: dropbox }
       - { name: google-chrome }
       - { name: iterm2 }
+      - { name: medis }
+      - { name: sequel-ace }
       - { name: slack }
-      - { name: adoptopenjdk8 }
-      - { name: docker }
-      - { name: kitematic }
-      - { name: vagrant }
       - { name: visual-studio-code }
-      - { name: zoom }
+      #- { name: docker }
+      #- { name: zoom }
     macos_global_defaults:
       - key: AppleInterfaceStyle
         type: string
@@ -99,7 +92,7 @@
         value: true
       - domain: finder
         key: AppleShowAllFiles
-        type: bool
+        type: string
         value: true
       - domain: systemuiserver
         key: menuExtras

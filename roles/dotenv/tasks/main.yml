@@ -18,6 +18,7 @@
     src: ~/Dropbox/myhome-conf/tool-versions
     dest: ~/.tool-versions
     state: link
+    force: yes
 
 # aws
 - name: create aws directory
@@ -30,6 +31,7 @@
     src: ~/Dropbox/myhome-conf/aws
     dest: ~/.aws
     state: link
+    force: yes
 
 # bash
 - shell: touch ~/Dropbox/myhome-conf/bash_profile
@@ -38,12 +40,14 @@
     src: ~/Dropbox/myhome-conf/bash_profile
     dest: ~/.bash_profile
     state: link
+    force: yes
 - shell: touch ~/Dropbox/myhome-conf/bashrc
 - name: symbolic link for .bashrc
   file:
     src: ~/Dropbox/myhome-conf/bashrc
     dest: ~/.bashrc
     state: link
+    force: yes
 
 # config
 - name: create config directory
@@ -56,6 +60,7 @@
     src: ~/Dropbox/myhome-conf/config
     dest: ~/.config
     state: link
+    force: yes
 
 # git
 - name: create git directory
@@ -75,6 +80,7 @@
     src: ~/Dropbox/myhome-conf/kube
     dest: ~/.kube
     state: link
+    force: yes
 
 # profile
 - shell: touch ~/Dropbox/myhome-conf/profile
@@ -83,6 +89,7 @@
     src: ~/Dropbox/myhome-conf/profile
     dest: ~/.profile
     state: link
+    force: yes
 
 # zsh
 - shell: touch ~/Dropbox/myhome-conf/zshenv
@@ -91,6 +98,7 @@
     src: ~/Dropbox/myhome-conf/zshenv
     dest: ~/.zshenv
     state: link
+    force: yes
 - shell: touch ~/Dropbox/myhome-conf/zshrc
 - name: symbolic link for .zshrc
   file:
