@@ -46,6 +46,7 @@
       - { name: fzf }
       - { name: awscli }
       - { name: aws-iam-authenticator }
+      - { name: aws-vault }
     brew_cask_packages:
       - { name: alfred }
       - { name: appcleaner }
