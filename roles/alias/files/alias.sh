@@ -4,7 +4,7 @@
 alias g='cd $(ghq root)/$(ghq list | peco)'
 alias gb='git branch $(git branch | peco | sed -e "s/\*//g")'
 alias gc='git checkout $(git branch | peco | sed -e "s/\*//g")'
-alias grbi='git rebase -i $(git merge-base origin/$(git rev-parse --abbrev-ref HEAD) HEAD)'
+alias grbi='git rebase -i $(git rev-parse origin/HEAD)'
 
 # aws
 alias awsp='source $(ghq root)/github.com/itouuuuuuuuu/awsp/run.sh'
