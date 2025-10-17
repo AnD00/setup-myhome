@@ -15,6 +15,7 @@
     content: |
       if [[ -s ~/.zprezto/init.zsh ]]; then source ~/.zprezto/init.zsh ; fi
       source ~/.bash_profile
+      eval "$(direnv hook zsh)"
       zstyle ':vcs_info:git:*' check-for-changes true
       zstyle ':vcs_info:git:*' stagedstr "%F{yellow}!"
       zstyle ':vcs_info:git:*' unstagedstr "%F{red}+"

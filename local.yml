@@ -21,6 +21,7 @@
       - { name: openssl@3 }
       - { name: libffi }
       - { name: coreutils }
+      - { name: direnv }
       - { name: ghq }
       - { name: git }
       - { name: gnupg }
