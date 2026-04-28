@@ -17,10 +17,10 @@
   shell: asdf install golang $(asdf list all golang | grep "^\d.*" | grep -v beta | grep -v rc | tail -n 1)
 - name: set latest golang version
   shell: asdf set -u golang $(asdf list all golang | grep "^\d.*" | grep -v beta | grep -v rc | tail -n 1)
-- name: set golang environment variables
+- name: set asdf shims path
   lineinfile:
     dest: ~/.bash_profile
-    line: 'export PATH="$GOPATH/bin:$PATH"'
+    line: 'export PATH="$HOME/.asdf/shims:$PATH"'
 
 # nodejs
 - name: check nodejs

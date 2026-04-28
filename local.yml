@@ -23,6 +23,7 @@
       - { name: coreutils }
       - { name: direnv }
       - { name: ghq }
+      - { name: gh }
       - { name: git }
       - { name: gnupg }
       - { name: graphviz }
@@ -48,6 +49,8 @@
       - { name: awscli }
       - { name: aws-iam-authenticator }
       - { name: aws-vault }
+      - { name: claude-code }
+      - { name: codex }
     brew_cask_packages:
       - { name: alfred }
       - { name: appcleaner }
