@@ -16,7 +16,7 @@
     - aws
     - k8s
   vars:
-    ansible_python_interpreter: /opt/homebrew/bin/python3
+    ansible_python_interpreter: "{{ homebrew_prefix }}/bin/python3"
     brew_packages:
       - { name: openssl@3 }
       - { name: libffi }

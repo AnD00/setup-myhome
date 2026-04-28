@@ -2,5 +2,5 @@
 - name: set mysql environment variables
   lineinfile:
     dest: ~/.bash_profile
-    line: 'export PATH="/opt/homebrew/opt/mysql@8.0/bin:$PATH"'
+    line: 'export PATH="{{ homebrew_prefix }}/opt/mysql@8.0/bin:$PATH"'
     create: yes

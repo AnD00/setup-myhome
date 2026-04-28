@@ -1,21 +1,26 @@
 ---
 # dropbox
-- name: create Dropbox directory
-  file:
-    path: ~/Dropbox
-    state: directory
-    mode: 0755
+# Note: ~/Library/CloudStorage/Dropbox is managed by macOS File Provider;
+# the Dropbox app creates it on sign-in, so we don't (and can't) chmod it here.
+- name: check Dropbox directory exists
+  stat:
+    path: "{{ dropbox_dir }}"
+  register: dropbox_dir_stat
+- name: assert Dropbox is installed and signed in
+  assert:
+    that: dropbox_dir_stat.stat.exists
+    fail_msg: "{{ dropbox_dir }} not found. Install Dropbox and sign in before running this playbook."
 - name: create myhome-conf directory
   file:
-    path: ~/Dropbox/myhome-conf
+    path: "{{ myhome_conf_dir }}"
     state: directory
     mode: 0755
 
 # asdf
-- shell: touch ~/Dropbox/myhome-conf/tool-versions
+- shell: touch {{ myhome_conf_dir }}/tool-versions
 - name: symbolic link for .tool-versions
   file:
-    src: ~/Dropbox/myhome-conf/tool-versions
+    src: "{{ myhome_conf_dir }}/tool-versions"
     dest: ~/.tool-versions
     state: link
     force: yes
@@ -23,28 +28,28 @@
 # aws
 - name: create aws directory
   file:
-    path: ~/Dropbox/myhome-conf/aws
+    path: "{{ myhome_conf_dir }}/aws"
     state: directory
     mode: 0755
 - name: symbolic link for .aws
   file:
-    src: ~/Dropbox/myhome-conf/aws
+    src: "{{ myhome_conf_dir }}/aws"
     dest: ~/.aws
     state: link
     force: yes
 
 # bash
-- shell: touch ~/Dropbox/myhome-conf/bash_profile
+- shell: touch {{ myhome_conf_dir }}/bash_profile
 - name: symbolic link for .bash_profile
   file:
-    src: ~/Dropbox/myhome-conf/bash_profile
+    src: "{{ myhome_conf_dir }}/bash_profile"
     dest: ~/.bash_profile
     state: link
     force: yes
-- shell: touch ~/Dropbox/myhome-conf/bashrc
+- shell: touch {{ myhome_conf_dir }}/bashrc
 - name: symbolic link for .bashrc
   file:
-    src: ~/Dropbox/myhome-conf/bashrc
+    src: "{{ myhome_conf_dir }}/bashrc"
     dest: ~/.bashrc
     state: link
     force: yes
@@ -52,12 +57,12 @@
 # config
 - name: create config directory
   file:
-    path: ~/Dropbox/myhome-conf/config
+    path: "{{ myhome_conf_dir }}/config"
     state: directory
     mode: 0755
 - name: symbolic link for .config
   file:
-    src: ~/Dropbox/myhome-conf/config
+    src: "{{ myhome_conf_dir }}/config"
     dest: ~/.config
     state: link
     force: yes
@@ -65,48 +70,48 @@
 # git
 - name: create git directory
   file:
-    path: ~/Dropbox/myhome-conf/config/git
+    path: "{{ myhome_conf_dir }}/config/git"
     state: directory
     mode: 0755
 
 # kube
 - name: create kube directory
   file:
-    path: ~/Dropbox/myhome-conf/kube
+    path: "{{ myhome_conf_dir }}/kube"
     state: directory
     mode: 0755
 - name: symbolic link for .kube
   file:
-    src: ~/Dropbox/myhome-conf/kube
+    src: "{{ myhome_conf_dir }}/kube"
     dest: ~/.kube
     state: link
     force: yes
 
 # profile
-- shell: touch ~/Dropbox/myhome-conf/profile
+- shell: touch {{ myhome_conf_dir }}/profile
 - name: symbolic link for .profile
   file:
-    src: ~/Dropbox/myhome-conf/profile
+    src: "{{ myhome_conf_dir }}/profile"
     dest: ~/.profile
     state: link
     force: yes
 
 # zsh
-- shell: touch ~/Dropbox/myhome-conf/zshenv
+- shell: touch {{ myhome_conf_dir }}/zshenv
 - name: symbolic link for .zshenv
   file:
-    src: ~/Dropbox/myhome-conf/zshenv
+    src: "{{ myhome_conf_dir }}/zshenv"
     dest: ~/.zshenv
     state: link
     force: yes
-- shell: touch ~/Dropbox/myhome-conf/zshrc
+- shell: touch {{ myhome_conf_dir }}/zshrc
 - name: symbolic link for .zshrc
   file:
-    src: ~/Dropbox/myhome-conf/zshrc
+    src: "{{ myhome_conf_dir }}/zshrc"
     dest: ~/.zshrc
     state: link
     force: yes
 - name: set homebrew path
   lineinfile:
     dest: ~/.zshrc
-    line: 'eval "$(/opt/homebrew/bin/brew shellenv)"'
+    line: 'eval "$({{ homebrew_prefix }}/bin/brew shellenv)"'

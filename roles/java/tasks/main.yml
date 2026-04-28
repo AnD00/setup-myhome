@@ -1,7 +1,7 @@
 ---
 - name: create symlink for system Java wrappers
   file:
-    src: /opt/homebrew/opt/openjdk/libexec/openjdk.jdk
+    src: "{{ homebrew_prefix }}/opt/openjdk/libexec/openjdk.jdk"
     dest: /Library/Java/JavaVirtualMachines/openjdk.jdk
     state: link
     force: yes
@@ -11,8 +11,8 @@
   blockinfile:
     dest: ~/.zshrc
     content: |
-      export PATH="/opt/homebrew/opt/openjdk/bin:$PATH"
+      export PATH="{{ homebrew_prefix }}/opt/openjdk/bin:$PATH"
       export JAVA_HOME="$(/usr/libexec/java_home)"
-      export CPPFLAGS="-I/opt/homebrew/opt/openjdk/include"
+      export CPPFLAGS="-I{{ homebrew_prefix }}/opt/openjdk/include"
     create: yes
     marker: "# {mark} ANSIBLE MANAGED BLOCK for openjdk"

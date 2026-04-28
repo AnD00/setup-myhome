@@ -3,7 +3,7 @@
   blockinfile:
     dest: ~/.zshenv
     content: |
-      FPATH=/opt/homebrew/share/zsh-completions:$FPATH
+      FPATH={{ homebrew_prefix }}/share/zsh-completions:$FPATH
       autoload -Uz compinit vcs_info
       compinit
     create: yes

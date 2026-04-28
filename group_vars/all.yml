@@ -1,0 +1,4 @@
+---
+homebrew_prefix: /opt/homebrew
+dropbox_dir: "~/Library/CloudStorage/Dropbox"
+myhome_conf_dir: "{{ dropbox_dir }}/myhome-conf"

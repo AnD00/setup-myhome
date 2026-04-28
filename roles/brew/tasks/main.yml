@@ -10,5 +10,5 @@
   when: brew_packages is defined and brew_packages | length > 0
 - name: changing perm of homebrew share
   file:
-    dest: /opt/homebrew/share
+    dest: "{{ homebrew_prefix }}/share"
     mode: go-w
