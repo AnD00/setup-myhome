@@ -1,13 +1,7 @@
 ---
 # asdf
-- name: set asdf environment variables
-  lineinfile:
-    dest: ~/.bash_profile
-    line: 'export ASDF_PREFIX="/opt/homebrew/opt/asdf"'
-- name: load asdf file
-  lineinfile:
-    dest: ~/.bash_profile
-    line: "source $ASDF_PREFIX/libexec/asdf.sh"
+# Note: asdf 0.19.0+ installed via Homebrew is available directly via PATH
+# No need to source asdf.sh anymore - the binary is at /opt/homebrew/bin/asdf
 - name: create asdf directory
   file:
     path: ~/.asdf
