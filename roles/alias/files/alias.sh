@@ -8,6 +8,7 @@ alias grbi='git rebase -i $(git rev-parse origin/HEAD)'
 
 # aws
 alias awsp='source $(ghq root)/github.com/itouuuuuuuuu/awsp/run.sh'
+alias awslogin='aws sso login --profile $(grep "\[profile" ~/.aws/config | sed "s/\[profile //" | sed "s/\]//" | peco)'
 
 # k8s
 alias k='kubectl'
